@@ -1,13 +1,42 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import "leaflet/dist/leaflet.css";
+
+import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
+
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+import Landing from "./Landing";
+import Step0 from "./Step0";
+import Step1 from "./Step1";
+import Step2 from "./Step2";
+import Slides from "./slides/Slides";
+import Step3 from "./Step3";
+import Step4 from "./Step4";
+import Step5 from "./Step5";
+import Step6 from "./Step6";
+import Step7 from "./Step7";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Landing></Landing>}></Route>
+
+          <Route path="/step0" element={<Step0 />}></Route>
+          <Route path="/step1" element={<Step1 />}></Route>
+          <Route path="/step2" element={<Step2 />}></Route>
+          <Route path="/step3" element={<Step3 />}></Route>
+          <Route path="/step4" element={<Step4 />}></Route>
+          <Route path="/step5" element={<Step5 />}></Route>
+          <Route path="/step6" element={<Step6 />}></Route>
+          <Route path="/step7" element={<Step7 />}></Route>
+          <Route path="/slides" element={<Slides />}></Route>
+        </Routes>
+      </div>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );
