@@ -2,6 +2,14 @@ import { useEffect } from "react";
 import { loadAndCacheOfflineMapData } from "react-cismap/tools/offlineMapsHelper";
 import MapLibreLayer from "react-cismap/vector/MapLibreLayer";
 import { Map } from "react-leaflet";
+import { Card } from "antd";
+import Control from "react-leaflet-control";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowAltCircleLeft,
+  faArrowAltCircleRight,
+} from "@fortawesome/free-solid-svg-icons";
+
 import vectorStyle from "./style";
 import maplibreGl from "maplibre-gl";
 
@@ -86,6 +94,33 @@ export default function Step4() {
   return (
     <Map style={mapStyle} center={position} zoom={18} maxZoom={25}>
       <MapLibreLayer style={layerConf} />
+      <Control position="bottomright">
+        <Card
+          size="small"
+          title="Intercepting Traffic and get Tiles from IndexedDB"
+          hoverable
+          style={{ width: "440px", margin: 20 }}
+          actions={[
+            <a href={process.env.PUBLIC_URL + "/#/step3"}>
+              <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+            </a>,
+            <a href={process.env.PUBLIC_URL + "/#/step5"}>
+              <FontAwesomeIcon icon={faArrowAltCircleRight} />
+            </a>,
+          ]}
+        >
+          <ul>
+            <li>
+              Open network tab and filter for <code>omt.map-hosting.de</code>{" "}
+              (The pbf's that you see are Font pbf's)
+            </li>
+            <li>
+              zoom out to see that there are no tiles outside Wuppertal
+              available
+            </li>
+          </ul>
+        </Card>
+      </Control>
     </Map>
   );
 }
