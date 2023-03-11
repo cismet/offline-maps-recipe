@@ -1,0 +1,36 @@
+name: Deployment
+on:
+  push:
+    branches:
+      - dev
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install Packages
+        run: yarn install
+      - name: prepare 0
+        run: touch .version && touch .githash && yarn run postversion
+      - name: prepare 1 (version stuff)
+        run: VERSION=`cat .version`; sed -i "s/%APPLICATION_VERSION%/$VERSION/" src/version.js
+      - name: prepare 2 (hash stuff)
+        run: HASH=`cat .githash`; sed -i "s/%APPLICATION_HASH%/$HASH/" src/version.js
+      - name: Build page
+        run: yarn run build
+        env:
+          CI: false
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
+      - name: show deployed folder
+        run: ls build
