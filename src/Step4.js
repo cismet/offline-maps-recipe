@@ -14,6 +14,7 @@ import vectorStyle from "./style";
 import maplibreGl from "maplibre-gl";
 
 import Dexie from "dexie";
+import { attribution } from "./Step0";
 
 const DBVERSION = 1;
 const DBNAME = "cismap-offline-data";
@@ -93,7 +94,7 @@ export default function Step4() {
 
   return (
     <Map style={mapStyle} center={position} zoom={18} maxZoom={25}>
-      <MapLibreLayer style={layerConf} />
+      <MapLibreLayer style={layerConf} {...attribution} />
       <Control position="bottomright">
         <Card
           size="small"

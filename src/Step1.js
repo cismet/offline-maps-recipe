@@ -9,6 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import vectorStyle from "./style";
+import { attribution } from "./Step0";
 const mapStyle = {
   height: "100vh",
   cursor: "pointer",
@@ -26,7 +27,7 @@ export default function Step1() {
   console.log("layerConf", layerConf);
   return (
     <Map style={mapStyle} center={position} zoom={18} maxZoom={25}>
-      <MapLibreLayer style={layerConf} />
+      <MapLibreLayer style={layerConf} {...attribution} />
       <Control position="bottomright">
         <Card
           size="small"

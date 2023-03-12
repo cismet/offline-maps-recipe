@@ -15,6 +15,7 @@ import {
 
 import vectorStyle from "./style";
 import maplibreGl from "maplibre-gl";
+import { attribution } from "./Step0";
 
 const mapStyle = {
   height: "100vh",
@@ -84,7 +85,7 @@ export default function Step7() {
 
   return (
     <Map style={mapStyle} center={position} zoom={18} maxZoom={25}>
-      <MapLibreLayer style={layerConf} />
+      <MapLibreLayer style={layerConf} {...attribution} />
       <Control position="bottomright">
         <Card
           size="small"

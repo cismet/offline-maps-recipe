@@ -11,11 +11,19 @@ const mapStyle = {
   height: "100vh",
   cursor: "pointer",
 };
+export const attribution = {
+  attribution:
+    '&copy; <a  target="_" href="http://openmaptiles.org/">OpenMapTiles</a> | &copy; <a target="_" href="http://osm.org/copyright">OpenStreetMap contributors</a>',
+};
+
 export default function Step0() {
   const position = [51.2720151, 7.2000203134];
   return (
     <Map style={mapStyle} center={position} zoom={18} maxZoom={25}>
-      <MapLibreLayer style="https://omt.map-hosting.de/styles/klokantech-basic/style.json" />
+      <MapLibreLayer
+        style="https://omt.map-hosting.de/styles/klokantech-basic/style.json"
+        {...attribution}
+      />
       {/* alternative style (with sprites) */}
       {/* <MapLibreLayer style="https://omt.map-hosting.de/styles/cismet-basic/style.json" /> */}
 
