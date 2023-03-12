@@ -12,18 +12,6 @@ import { ExpirationPlugin } from "workbox-expiration";
 import { precacheAndRoute, createHandlerBoundToURL } from "workbox-precaching";
 import { registerRoute } from "workbox-routing";
 import { StaleWhileRevalidate } from "workbox-strategies";
-import Dexie from "dexie";
-
-const DBVERSION = 1;
-const DBNAME = "carma";
-const OBJECTSTORE = "vectorTilesCache";
-
-const CONSOLEDEBUG = false;
-
-export const db = new Dexie(DBNAME);
-db.version(DBVERSION).stores({
-  vectorTilesCache: "key",
-});
 
 clientsClaim();
 
@@ -62,7 +50,8 @@ registerRoute(
 // precache, in this case same-origin .png requests like those from in public/
 registerRoute(
   // Add in any other file extensions or routing criteria as needed.
-  ({ url }) => url.origin === self.location.origin && url.pathname.endsWith(".png"), // Customize this strategy as needed, e.g., by changing to CacheFirst.
+  ({ url }) =>
+    url.origin === self.location.origin && url.pathname.endsWith(".png"), // Customize this strategy as needed, e.g., by changing to CacheFirst.
   new StaleWhileRevalidate({
     cacheName: "images",
     plugins: [
@@ -82,81 +71,3 @@ self.addEventListener("message", (event) => {
 });
 
 // Any other custom service worker logic can go here.
-
-self.addEventListener("activate", (evt) => {
-  if (CONSOLEDEBUG) console.log("zzz service worker has been activated");
-});
-
-// self.addEventListener("fetch", (fetchEvent) => {
-//   if (CONSOLEDEBUG) console.log("zzz fetchEvent.request", fetchEvent.request);
-
-//   fetchEvent.respondWith(fetch(fetchEvent.request));
-// });
-
-let config, offline;
-
-self.addEventListener("message", (event) => {
-  if (CONSOLEDEBUG) console.log("offlineVTSW messageEvent", event);
-
-  if (event.data && event.data.type === "SETCARMAOFFLINECONFIG") {
-    config = event.data.config;
-    offline = event.data.offline;
-  }
-});
-
-const cachedFetch = async (req) => {
-  if (CONSOLEDEBUG) console.log("offlineVTSW:: offline=" + offline);
-
-  try {
-    if (CONSOLEDEBUG) console.log("offlineVTSW:: intercept " + req.url);
-
-    if (offline === true) {
-      if (CONSOLEDEBUG) console.log("offlineVTSW:: intercept " + req.url);
-
-      for (const type of Object.keys(config)) {
-        if (CONSOLEDEBUG) console.log("offlineVTSW:: check for " + type);
-        if (req.url.startsWith(config[type].origin)) {
-          if (config[type].block === true) {
-            if (CONSOLEDEBUG) console.log("offlineVTSW:: blocked request");
-
-            return new Response();
-          } else {
-            const path = decodeURIComponent(
-              config[type].cachePath + req.url.replace(config[type].origin, "")
-            );
-            if (CONSOLEDEBUG) console.log("offlineVTSW:: detected a " + type + " request.");
-            const hit = await db[OBJECTSTORE].get(path);
-            if (hit) {
-              if (CONSOLEDEBUG)
-                console.log("offlineVTSW:: found a " + type + " cache entry for " + path + ".");
-              return new Response(hit.value);
-            } else {
-              if (CONSOLEDEBUG)
-                console.log(
-                  "offlineVTSW:: missed a " +
-                    type +
-                    " cache entry for " +
-                    path +
-                    " (" +
-                    req.url +
-                    ")."
-                );
-              //return await fetch(req);
-              return new Response();
-            }
-          }
-        }
-      }
-      return await fetch(req);
-    } else {
-      if (CONSOLEDEBUG) console.log("(online) offlineVTSW:: no intercept " + req.url);
-      return await fetch(req);
-    }
-  } catch (e) {
-    if (CONSOLEDEBUG) console.log("Error in cachedFetch", e);
-  }
-};
-
-self.addEventListener("fetch", (fetchEvent) => {
-  fetchEvent.respondWith(cachedFetch(fetchEvent.request));
-});
