@@ -51,16 +51,16 @@ export default function Step3() {
           callback(null, buf, null, null);
         });
     };
-    maplibreGl.addProtocol("indexedDB", (params, callback) => {
-      console.log("indexeddb protocol interception", params.url);
-      let url = params.url.replace("indexedDB://", "");
+    maplibreGl.addProtocol("custom", (params, callback) => {
+      console.log("custom protocol interception", params.url);
+      let url = params.url.replace("custom://", "");
       fetchOnline(url, callback);
     });
   });
   const layerConf = JSON.parse(JSON.stringify(vectorStyle));
-  layerConf.glyphs = "indexedDB://" + layerConf.glyphs;
+  layerConf.glyphs = "custom://" + layerConf.glyphs;
   layerConf.sources.openmaptiles.tiles[0] =
-    "indexedDB://" + layerConf.sources.openmaptiles.tiles[0];
+    "custom://" + layerConf.sources.openmaptiles.tiles[0];
   console.log("layerConf", layerConf);
 
   return (
@@ -83,8 +83,8 @@ export default function Step3() {
         >
           <p>
             Filter the console output for{" "}
-            <code>indexeddb protocol interception</code>. (The url will be
-            fetched online though.)
+            <code>custom protocol interception</code>. (The url will be fetched
+            online though.)
           </p>
         </Card>
       </Control>

@@ -17,9 +17,9 @@ export default function Step2() {
   const position = [51.2720151, 7.2000203134];
 
   const layerConf = JSON.parse(JSON.stringify(vectorStyle));
-  layerConf.glyphs = "indexedDB://" + layerConf.glyphs;
+  layerConf.glyphs = "custom://" + layerConf.glyphs;
   layerConf.sources.openmaptiles.tiles[0] =
-    "indexedDB://" + layerConf.sources.openmaptiles.tiles[0];
+    "custom://" + layerConf.sources.openmaptiles.tiles[0];
   console.log("layerConf", layerConf);
 
   return (
