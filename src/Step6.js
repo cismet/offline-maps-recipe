@@ -26,7 +26,7 @@ const offlineConfig = {
     {
       name: "Vektorkarte für Wuppertal",
       key: "wuppBasemap",
-      url: "https://offline-data.cismet.de/offline-data/wupp.zip",
+      url: "w.zip",
     },
   ],
   consoleDebug: true,
@@ -39,16 +39,6 @@ const offlineConfig = {
     {
       origin: "https://omt.map-hosting.de/fonts",
       cachePath: "fonts",
-      realServerFallback: false,
-    },
-    {
-      origin: "https://omt.map-hosting.de/styles",
-      cachePath: "styles",
-      realServerFallback: false,
-    },
-    {
-      origin: "https://omt.map-hosting.de/data/v3.json",
-      cachePath: "v3.json",
       realServerFallback: false,
     },
     {

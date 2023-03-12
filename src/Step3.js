@@ -23,7 +23,7 @@ const offlineConfig = {
     {
       name: "Vektorkarte für Wuppertal",
       key: "wuppBasemap",
-      url: "https://offline-data.cismet.de/offline-data/wupp.zip",
+      url: "w.zip",
     },
   ],
   consoleDebug: true,
