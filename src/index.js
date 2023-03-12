@@ -7,7 +7,6 @@ import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
-import Landing from "./Landing";
 import Step0 from "./Step0";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
