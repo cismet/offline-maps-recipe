@@ -97,7 +97,7 @@ export default function Step4() {
       <Control position="bottomright">
         <Card
           size="small"
-          title="Intercepting Traffic and get Tiles from IndexedDB"
+          title="🚀 Intercepting Traffic and get Tiles from IndexedDB 🚀"
           hoverable
           style={{ width: "440px", margin: 20 }}
           actions={[
