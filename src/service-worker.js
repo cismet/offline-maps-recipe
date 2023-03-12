@@ -71,3 +71,19 @@ self.addEventListener("message", (event) => {
 });
 
 // Any other custom service worker logic can go here.
+
+registerRoute(
+  // match only with assets on the assets domain
+  new RegExp("https://omt.map-hosting.de/.*sprite.*"),
+  new StaleWhileRevalidate({
+    cacheName: "omt-sprite-cache-cache",
+    plugins: [
+      new ExpirationPlugin({
+        // 28 days cache before expiration
+        maxAgeSeconds: 24 * 60 * 60 * 28,
+        // Opt-in to automatic cleanup whenever a quota errors occurs anywhere in Workbox
+        purgeOnQuotaError: true, // Opt-in to automatic cleanup.
+      }),
+    ],
+  })
+);
