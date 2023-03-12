@@ -23,8 +23,7 @@ ReactDOM.render(
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Landing></Landing>}></Route>
-
+          <Route path="/" element={<Step0 />}></Route>
           <Route path="/step0" element={<Step0 />}></Route>
           <Route path="/step1" element={<Step1 />}></Route>
           <Route path="/step2" element={<Step2 />}></Route>
