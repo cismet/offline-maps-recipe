@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import "leaflet/dist/leaflet.css";
 
-import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
