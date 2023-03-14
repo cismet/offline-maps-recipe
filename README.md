@@ -8,6 +8,6 @@
 [🇩🇪 German Version of the Slides (PDF)](https://cismet.github.io/offline-maps-recipe/Offline.Maps.Recipe_de.pdf)
 
 
-## Demo application that shows in 7 steps a possibility to hava a map background that doesn't need internetz
+## Demo application that shows in 7 steps a possibility to have a map background that doesn't need internetz
 
 <img width="893" alt="Screenshot_Step4" src="https://user-images.githubusercontent.com/837211/224551126-fa1f1ec1-6dae-4a95-9097-02399022ea25.png">
