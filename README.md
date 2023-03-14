@@ -4,8 +4,8 @@
 
 ## There is a lightning talk about this topic. Here are the slides:
 
-[🇬🇧 English Version of the Slides (PDF)](Offline.Maps.Recipe_en.pdf)
-[🇩🇪 German Version of the Slides (PDF)](Offline.Maps.Recipe_de.pdf)
+[🇬🇧 English Version of the Slides (PDF)](https://cismet.github.io/offline-maps-recipe/Offline.Maps.Recipe_en.pdf)
+[🇩🇪 German Version of the Slides (PDF)](https://cismet.github.io/offline-maps-recipe/Offline.Maps.Recipe_de.pdf)
 
 
 ## Demo application that shows in 7 steps a possibility to hava a map background that doesn't need internetz
