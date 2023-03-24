@@ -21,6 +21,17 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <div className="App">
+        <a
+          target="_blank"
+          rel="noreferrer"
+          class="github-fork-ribbon right-top fixed"
+          href="https://cismet.de/en/index.html#jobs"
+          data-ribbon="🦸🏻‍♀️  We are hiring  🦸🏾‍♂️"
+          title="We are hiring"
+        >
+          We are hiring
+        </a>
+
         <Routes>
           <Route path="/" element={<Step0 />}></Route>
           <Route path="/step0" element={<Step0 />}></Route>
