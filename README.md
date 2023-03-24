@@ -4,6 +4,13 @@
 
 Made with ❤️ from <a target="_" href="https://cismet.de/en/index.html">cismet.de</a>
 
+## 🦸🏻‍♀️ We are hiring 🦸🏾‍♂️
+
+[🇬🇧 English Version of our Jobs Section](https://cismet.de/en/index.html#jobs)
+[🇩🇪 German Version of our Jobs Section](https://cismet.de/index.html#jobs)
+
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/cismet/offline-maps-recipe)
+
 ## There is a lightning talk about this topic. Here are the slides:
 
 [🇬🇧 English Version of the Slides (PDF)](https://cismet.github.io/offline-maps-recipe/Offline.Maps.Recipe_en.pdf)
